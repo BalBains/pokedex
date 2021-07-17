@@ -7,21 +7,21 @@ const packageJson = require('../package.json');
 const devConfig = {
   mode: 'development',
   output: {
-    publicPath: 'http://localhost:3000/',
+    publicPath: 'http://localhost:3001/',
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    port: 3000,
+    port: 3001,
     historyApiFallback: {
       index: 'index.html',
     },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
-      remotes: {
-        pokedex: 'pokedex@http://localhost:3001/remoteEntry.js',
-        admin: 'admin@http://localhost:3002/remoteEntry.js',
+      name: 'pokedex',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './PokedexApp': './src/bootstrap',
       },
       shared: packageJson.dependencies,
     }),

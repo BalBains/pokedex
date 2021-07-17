@@ -14,7 +14,8 @@ interface AppConfig {
   initialPath?: string;
   defaultHistory: History<any> | undefined;
 }
-const mount = (
+
+export const mount = (
   el: Element,
   { onNavigate, defaultHistory, initialPath = '' }: AppConfig
 ) => {
