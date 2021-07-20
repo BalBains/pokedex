@@ -14,8 +14,8 @@ function App({ history }: AppProps) {
     <div className="App">
       <Router history={history}>
         <Switch>
-          <Route path="/" exact component={PokemonSearch} />
-          <Route path="/:id" component={PokemonDetails} />
+          <Route path="/pokedex" exact component={PokemonSearch} />
+          <Route path="/pokedex/:id" component={PokemonDetails} />
         </Switch>
       </Router>
     </div>
