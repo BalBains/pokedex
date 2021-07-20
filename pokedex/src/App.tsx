@@ -1,6 +1,9 @@
 import { History } from 'history';
+import { Route, Router, Switch } from 'react-router-dom';
 
 import './App.css';
+import PokemonDetails from './components/PokemonDetails';
+import PokemonSearch from './components/PokemonSearch';
 
 interface AppProps {
   history: History<any>;
@@ -9,19 +12,12 @@ interface AppProps {
 function App({ history }: AppProps) {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router history={history}>
+        <Switch>
+          <Route path="/" exact component={PokemonSearch} />
+          <Route path="/:id" component={PokemonDetails} />
+        </Switch>
+      </Router>
     </div>
   );
 }
